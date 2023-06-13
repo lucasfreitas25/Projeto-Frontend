@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: white;
+  --url: url(./assets/bg-desktop-dark.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: #0babdd;
+  --surface-text: #e10052;
+  --surface-color-hover: white;
+  --surface-social: rgba(247, 4, 194, 0.2);
+  --switch-bg-url: url(./assets/moon-starts.svg);
+}
+
+.light {
+  --text-color: black;
+  --url: url(./assets/bg-desktop-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: #e10052;
+  --surface-text: #0babdd;
+  --surface-color-hover: black;
+  --surface-social: rgba(247, 4, 194, 0.2);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/Background.jpg);
+  background-repeat: no-repeat; /*não repete a imagem varias vezes*/
+  /*background-position: top center;*/ /*valores de posicionamento */
+  /*background-size: cover;*/ /*cobrir toda area visivel*/
+
+  /*background: color image repeat position/size */
+  background: var(--url) no-repeat top center/cover;
+  height: 100vh;
+}
+
+body * {
+  /* * é um seletor universal de tudo que esta no bdy */
+  font-family: 'Luckiest Guy', cursive;
+  color: var(--text-color);
+}
+#container {
+  border: 2px solid rgba(43, 170, 255, 0.425);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 588px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+}
+/*existem elementos que inline e outros block*/
+
+#profile p {
+  margin-top: 8px;
+  font-weight: 500;
+  line-height: 24px;
+}
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 3px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute; /*permite sobrepor*/
+  top: 50%;
+  animation: vindaSuave 0.4s forwards;
+  z-index: 1; /*muda os andares*/
+  transform: translateY(-50%); /* */
+}
+
+.light #switch button {
+  animation: voltaSuave 0.4s forwards
+    /*mantem as propriedades definidas na animação*/;
+}
+
+#switch span {
+  width: 64px;
+  height: 24px;
+  display: block;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+#switch button:hover {
+  outline: 8px solid rgba(36, 2, 2, 0.322);
+}
+
+/*LINKS */
+
+ul {
+  list-style: none; /*tira a bolinha */
+  
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 24px 0;
+}
+
+ul li a {
+  color: var(--surface-text); /*aplica cor nas letras dessa caixa*/
+  display: flex;
+  align-items: center; /*alinha o itens no centro */
+  justify-content: center;
+  padding: 16px 24px;
+  background-color: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px; /*arrendonda a borda*/
+  backdrop-filter: blur(4px); /*aplica um filtro de blur*/
+  -webkit-backdrop-filter: blur(4px);
+  text-decoration: none; /* tira a decoração como underline */
+  font-weight: 500;
+  transition: background 0.3s; /*passa um parametro e partir disso defini o tempo para transição*/
+}
+
+/*Quando vc passa mouse em cima muda de cor*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+#social {
+  display: flex;
+  padding: 24px 0;
+  font-size: 24px;
+  justify-content: center;
+}
+
+#social a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+  padding: 16px;
+}
+
+#social a:hover {
+  background: var(--surface-social);
+}
+
+footer {
+  font-size: 14px;
+  text-align: center;
+  padding: 15px 0;
+}
+
+@media (min-width: 720px) {
+  :root {
+    --url: url(./assets/bg-mobile-dark.jpg);
+  }
+
+  .light {
+    --url: url(./assets/bg-mobile-light.jpg);
+  }
+}
+
+/*Cria animações */
+@keyframes voltaSuave {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes vindaSuave {
+  from {
+    right: 0%;
+  }
+  to {
+    right: 50%;
+  }
+}
